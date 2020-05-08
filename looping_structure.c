@@ -12,12 +12,12 @@ List_ptr map(mapperFn mapper, List_ptr list){
   return mapped_array;
 }
 
-List_ptr filter(mapperFn mapper, List_ptr list){
+List_ptr filter(predicateFn predicate, List_ptr list){
   Node_ptr p_walk = list->head;
   List_ptr mapped_array = create_list();
   while (p_walk != NULL)
   {
-    int status = (*mapper)(p_walk->value);
+    Bool status = (*predicate)(p_walk->value);
     if(status){
       add_to_end(mapped_array, p_walk->value);
     }

@@ -4,6 +4,10 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+typedef enum{
+  False,
+  True
+} Bool;
 typedef enum
 {
   Failure,
