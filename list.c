@@ -34,3 +34,62 @@ void display(List_ptr list){
     p_walk = p_walk->next;
   }
 }
+
+
+Status remove_from_start(List_ptr list){
+  if(list->head == NULL){
+    return Failure;
+  }
+  Node_ptr node_to_remove = list->head;
+  list->head = list->head->next;
+  free(node_to_remove);
+  list->count--;
+  return Success;
+}
+
+Status remove_from_end(List_ptr list){
+  if(list->head == NULL){
+    return Failure;
+  }
+  if(list->count == 1){
+    return remove_from_start(list);
+  }
+  Node_ptr p_walk = list->head;
+  while(p_walk->next->next != NULL){
+    p_walk = p_walk->next;
+  }
+  list->last = p_walk;
+  free(p_walk->next);
+  p_walk->next = NULL;
+  list->count--;
+  return Success;
+}
+
+
+Status clear_list(List_ptr list){
+  Status status = Success;
+  while(list->head != NULL){
+    status =  remove_from_end(list);
+  }
+  list->last = NULL;
+  return status;
+}
+
+void destroy_list(List_ptr list){
+  clear_list(list);
+  free(list);
+}
+
+Status compare(List_ptr list_a, List_ptr list_b){
+  Status status = Success;
+  Node_ptr p_walk_a = list_a->head;
+  Node_ptr p_walk_b = list_b->head;
+  while(p_walk_a == NULL){
+    if(p_walk_a->value != p_walk_b->value){
+      status = Failure;
+    }
+    p_walk_a = p_walk_a->next;
+    p_walk_b = p_walk_b->next;
+  }
+  return status;
+}

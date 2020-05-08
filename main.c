@@ -1,8 +1,5 @@
 #include "looping_structure.h"
-
-int increment(int num){
-  return num+1;
-}
+#include "functions.h"
 
 int main()
 {

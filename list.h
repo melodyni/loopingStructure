@@ -29,6 +29,8 @@ typedef List *List_ptr;
 
 List_ptr create_list(void);
 Status add_to_end(List_ptr list, int value);
+Status compare(List_ptr list_a, List_ptr list_b);
 void display(List_ptr list);
+void destroy_list(List_ptr list);
 
 #endif
