@@ -10,6 +10,6 @@ int main()
   add_to_end(list,5);
   display(list);
   printf("\n");
-  List_ptr mapped_list = map(&increment,list);
+  List_ptr mapped_list = filter(&is_odd,list);
   display(mapped_list);
 }

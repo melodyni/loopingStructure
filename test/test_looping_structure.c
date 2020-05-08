@@ -43,9 +43,29 @@ void test_map(){
   destroy_list(expected);
 }
 
+void test_filter(){
+  printf("\nfilter\n");
+  List_ptr list = create_list();
+  add_to_end(list,3); 
+  add_to_end(list,6); 
+  add_to_end(list,8);
+  add_to_end(list,7);
+  add_to_end(list,4);
+  List_ptr expected = create_list();
+  add_to_end(list,3); 
+  add_to_end(list,7); 
+  List_ptr actual = filter(&is_odd,list);
+  char message[] = "should filter odd numbers from the given list";
+  print_result(compare(actual,expected),message);
+  destroy_list(list);
+  destroy_list(actual);
+  destroy_list(expected);
+}
+
 int main()
 {
   test_map();
+  test_filter();
   return 0;
 }
 

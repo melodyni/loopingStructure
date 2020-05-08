@@ -6,5 +6,6 @@
 typedef int (*mapperFn) (int);
 
 List_ptr map(mapperFn, List_ptr);
+List_ptr filter(mapperFn , List_ptr);
 
 #endif
