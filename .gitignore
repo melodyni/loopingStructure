@@ -1,2 +1,4 @@
+.gitignore
 outputs/
 .vscode/
+test_results/
