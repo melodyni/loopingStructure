@@ -62,10 +62,25 @@ void test_filter(){
   destroy_list(expected);
 }
 
+void test_reduce(){
+  printf("\nreduce\n");
+  List_ptr list = create_list();
+  add_to_end(list,1); 
+  add_to_end(list,2); 
+  add_to_end(list,3);
+  add_to_end(list,4);
+  add_to_end(list,5);
+  int sum_of_list_elements = reduce(&add,list,0);
+  char message[] = "should filter odd numbers from the given list";
+  print_result(sum_of_list_elements == 15, message);
+  destroy_list(list);
+}
+
 int main()
 {
   test_map();
   test_filter();
+  test_reduce();
   return 0;
 }
 

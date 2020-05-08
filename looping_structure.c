@@ -25,3 +25,12 @@ List_ptr filter(predicateFn predicate, List_ptr list){
   }
   return mapped_array;
 }
+
+int reduce(reducerFn reducer , List_ptr list, int context){
+  Node_ptr p_walk = list->head;
+  while(p_walk != NULL){
+    context = (*reducer)(p_walk->value, context);
+    p_walk = p_walk->next;
+  }
+  return context;
+}
